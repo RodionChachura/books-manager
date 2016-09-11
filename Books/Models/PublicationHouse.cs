@@ -1,7 +1,7 @@
 ﻿using Books.Abstraction;
 using System.Collections.Generic;
 
-namespace BooksCardFile.Models
+namespace Books.Models
 {
     public class PublicationHouse : IModel
     {
@@ -10,7 +10,7 @@ namespace BooksCardFile.Models
             Books = new List<Book>();
         }
         public string Name { get; set; }
-        public string Sity { get; set; }
+        public string City { get; set; }
         public List<Book> Books { get; private set; }
     }
 }

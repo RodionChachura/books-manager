@@ -1,9 +1,9 @@
 ﻿using Books.Abstraction;
 using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
+using System.Drawing;
 
-namespace BooksCardFile.Models
+namespace Books.Models
 {
     public class Author : IModel
     {

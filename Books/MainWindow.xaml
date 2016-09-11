@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
+        xmlns:views="clr-namespace:Books.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Rodions Card-File" 
+        WindowStartupLocation="CenterScreen"
+        Height="500" Width="750">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="LeftStackPanel"
+                    Grid.Column="0"
+                    Grid.Row="0">
+            <ComboBox x:Name="ViewChoose"
+                      HorizontalAlignment="Right"
+                      Margin="10"
+                      SelectionChanged="ViewChoosed">
+                <ComboBoxItem  IsSelected="true">Books</ComboBoxItem>
+                <ComboBoxItem>Authors</ComboBoxItem>
+                <ComboBoxItem>Publication Houses</ComboBoxItem>
+            </ComboBox>
+            <ListView x:Name="CurrentModelsView"/>
+
+        </StackPanel>
     </Grid>
+    <!--<ListBox x:Name="listBox" HorizontalAlignment="Left" Height="359" Margin="10,101,0,0" VerticalAlignment="Top" Width="240"/>-->
 </Window>
