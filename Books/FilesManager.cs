@@ -13,13 +13,13 @@ using System.Windows;
 
 namespace Books
 {
-    public static class FilesManager
+    public static class Manager
     {
         public static ModelsCollection authors = new ModelsCollection();
         static readonly int authorsFields = 2;
 
-        public static ModelsCollection publicationHouses = new ModelsCollection();
-        static readonly int publicationHousesFields = 2;
+        public static ModelsCollection houses = new ModelsCollection();
+        static readonly int housesFields = 2;
 
         public static ModelsCollection books = new ModelsCollection();
         static readonly int booksFields = 7;
@@ -29,7 +29,7 @@ namespace Books
         static readonly string booksData = Path.Combine(dataPath, "books.txt");
         static readonly string authorsData = Path.Combine(dataPath, "authors.txt");
         static readonly string authorsPhotosData = Path.Combine(dataPath, "authorsPhotos");
-        static readonly string publicationHousesData = Path.Combine(dataPath, "publicationHouses.txt");
+        static readonly string housesData = Path.Combine(dataPath, "houses.txt");
 
         private static string[] splitByRegex(string text, string delim)
         {
@@ -55,7 +55,7 @@ namespace Books
             Directory.CreateDirectory(dataPath);
             Directory.CreateDirectory(authorsPhotosData);
             AuthorsInit();
-            PublicationHousesInit();
+            HousesInit();
             BooksInit();
         }
 
@@ -84,22 +84,22 @@ namespace Books
                 }
             }
         }
-        private static void PublicationHousesInit()
+        private static void HousesInit()
         {
-            string[] stringPublicationHouses = getStringModels(publicationHousesData);
-            if (stringPublicationHouses != null)
+            string[] stringHouses = getStringModels(housesData);
+            if (stringHouses != null)
             {
-                foreach (string stringPublicationHouse in stringPublicationHouses)
+                foreach (string stringHouse in stringHouses)
                 {
-                    string[] fields = splitByRegex(stringPublicationHouse, Environment.NewLine);
-                    if (fields.Length == publicationHousesFields)
+                    string[] fields = splitByRegex(stringHouse, Environment.NewLine);
+                    if (fields.Length == housesFields)
                     {
-                        PublicationHouse publicationHouse = new PublicationHouse()
+                        House house = new House()
                         {
                             Name = fields[0],
                             City = fields[1]
                         };
-                        publicationHouses.Add(publicationHouse);
+                        houses.Add(house);
                     }
                 }
             }
@@ -136,17 +136,17 @@ namespace Books
                             book.PublicationYear = year;
 
                         books.Add(book);
-                        if (publicationHouses.ContainsKey(fields[6]))
+                        if (houses.ContainsKey(fields[6]))
                         {
-                            book.PublicationHouse = (PublicationHouse)publicationHouses[fields[6]];
-                            ((PublicationHouse)publicationHouses[fields[6]]).Books.Add(book);
+                            book.House = (House)houses[fields[6]];
+                            ((House)houses[fields[6]]).Books.Add(book);
                         }
                         else
                         {
-                            PublicationHouse house = new PublicationHouse { Name = fields[6] };
-                            book.PublicationHouse = house;
+                            House house = new House { Name = fields[6] };
+                            book.House = house;
                             house.Books.Add(book);
-                            publicationHouses.Add(house);
+                            houses.Add(house);
                         }
 
                         string[] stringAuthors = splitByRegex(fields[1], ", ");

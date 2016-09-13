@@ -20,7 +20,7 @@ namespace Books.Views
         public AuthorsView()
         {
             InitializeComponent();
-            ItemsSource = FilesManager.authors.Values;
+            ItemsSource = Manager.authors.Values;
         }
     }
 }

@@ -57,13 +57,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Abstraction\IModel.cs" />
-    <Compile Include="Collections\Models.cs" />
+    <Compile Include="Abstraction\IViewModel.cs" />
+    <Compile Include="BooksConvertor.cs" />
+    <Compile Include="Collections\ModelsCollection.cs" />
+    <Compile Include="Convertors\BooksConvertor.cs" />
     <Compile Include="FilesManager.cs" />
+    <Compile Include="ViewModels\BooksViewModel.cs" />
+    <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="Views\AuthorsView.xaml.cs">
       <DependentUpon>AuthorsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PublicationHousesView.xaml.cs">
-      <DependentUpon>PublicationHousesView.xaml</DependentUpon>
+    <Compile Include="Views\HousesView.xaml.cs">
+      <DependentUpon>HousesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BooksView.xaml.cs">
       <DependentUpon>BooksView.xaml</DependentUpon>
@@ -84,7 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PublicationHousesView.xaml">
+    <Page Include="Views\HousesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,7 +101,7 @@
   <ItemGroup>
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\PublicationHouse.cs" />
+    <Compile Include="Models\House.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,7 +128,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

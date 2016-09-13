@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
-        xmlns:views="clr-namespace:Books.Views"
+        xmlns:convertors="clr-namespace:Books.Convertors"
         mc:Ignorable="d"
         Title="Rodions Card-File" 
         WindowStartupLocation="CenterScreen"
         Height="500" Width="750">
+
+    <Window.Resources>
+        <convertors:BooksConvertor x:Key="booksConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -26,8 +30,13 @@
                 <ComboBoxItem>Authors</ComboBoxItem>
                 <ComboBoxItem>Publication Houses</ComboBoxItem>
             </ComboBox>
-            <ListView x:Name="CurrentModelsView"/>
-
+            <ListView x:Name="booksList" ItemsSource="{Binding Books}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ., Converter={StaticResource booksConverter}}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
     </Grid>
     <!--<ListBox x:Name="listBox" HorizontalAlignment="Left" Height="359" Margin="10,101,0,0" VerticalAlignment="Top" Width="240"/>-->

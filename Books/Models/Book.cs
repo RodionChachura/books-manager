@@ -16,6 +16,6 @@ namespace Books.Models
         public int Pages { get; set; }
         public List<string> Tags { get; set; }
         public int PublicationYear { get; set; }
-        public PublicationHouse PublicationHouse { get; set; }
+        public House House { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Books.Models;
+using Books.ViewModels;
 using Books.Views;
 using System;
 using System.Collections.Generic;
@@ -24,20 +25,21 @@ namespace Books
     {
         public MainWindow()
         {
-            FilesManager.Initialization();
+            Manager.Initialization();
             InitializeComponent();
-            CurrentModelsView = new BooksView();
+            booksList.DataContext = new BooksViewModel();
+            //booksList.DataContext = Manager.books.Values.ToList();
 
         }
 
         private void ViewChoosed(object sender, SelectionChangedEventArgs e)
         {
-            if (ViewChoose.SelectedItem.ToString() == "Books")
-                CurrentModelsView = new BooksView();
-            else if (ViewChoose.SelectedItem.ToString() == "Authors")
-                CurrentModelsView = new AuthorsView();
-            else if (ViewChoose.SelectedItem.ToString() == "Publication Houses")
-                CurrentModelsView = new PublicationHousesView();
+            //if (ViewChoose.SelectedIndex == 0)
+            //    CurrentModelsView = new BooksView();
+            //else if (ViewChoose.SelectedIndex == 1)
+            //    CurrentModelsView = new AuthorsView();
+            //else if (ViewChoose.SelectedIndex == 2)
+            //    CurrentModelsView = new HousesView();
         }
 
     }
