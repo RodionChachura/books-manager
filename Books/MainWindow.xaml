@@ -4,14 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
-        xmlns:convertors="clr-namespace:Books.Convertors"
+        xmlns:models="clr-namespace:Books.Models"
+        xmlns:converters="clr-namespace:Books.Converters"
         mc:Ignorable="d"
         Title="Rodions Card-File" 
         WindowStartupLocation="CenterScreen"
         Height="500" Width="750">
 
     <Window.Resources>
-        <convertors:BooksConvertor x:Key="booksConverter" />
+        <converters:BookConverter x:Key="bookConverter" />
+        <converters:AuthorConverter x:Key="authorConverter" />
+        <converters:HouseConverter x:Key="houseConverter" />
+        <DataTemplate DataType="{x:Type models:Book}">
+            <TextBlock Text="{Binding ., Converter={StaticResource bookConverter}}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type models:Author}">
+            <TextBlock Text="{Binding ., Converter={StaticResource authorConverter}}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type models:House}">
+            <TextBlock Text="{Binding ., Converter={StaticResource houseConverter}}"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,14 +42,39 @@
                 <ComboBoxItem>Authors</ComboBoxItem>
                 <ComboBoxItem>Publication Houses</ComboBoxItem>
             </ComboBox>
-            <ListView x:Name="booksList" ItemsSource="{Binding Books}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding ., Converter={StaticResource booksConverter}}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView x:Name="list" ItemsSource="{Binding}"/>
         </StackPanel>
+        <Grid x:Name="BookGrid"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Content="Title:"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Author(s):"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="ISBN:"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Pages:"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Tags:"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Publication Year:"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="Publication House:"/>
+
+            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="3" />
+            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
+        </Grid>
     </Grid>
-    <!--<ListBox x:Name="listBox" HorizontalAlignment="Left" Height="359" Margin="10,101,0,0" VerticalAlignment="Top" Width="240"/>-->
 </Window>

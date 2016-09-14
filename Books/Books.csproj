@@ -58,10 +58,11 @@
     </ApplicationDefinition>
     <Compile Include="Abstraction\IModel.cs" />
     <Compile Include="Abstraction\IViewModel.cs" />
-    <Compile Include="BooksConvertor.cs" />
     <Compile Include="Collections\ModelsCollection.cs" />
-    <Compile Include="Convertors\BooksConvertor.cs" />
-    <Compile Include="FilesManager.cs" />
+    <Compile Include="Converters\AuthorConverter.cs" />
+    <Compile Include="Converters\BookConverter.cs" />
+    <Compile Include="Converters\HouseConverter.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="ViewModels\BooksViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="Views\AuthorsView.xaml.cs">

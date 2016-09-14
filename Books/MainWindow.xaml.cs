@@ -1,4 +1,5 @@
-﻿using Books.Models;
+﻿using Books.Abstraction;
+using Books.Models;
 using Books.ViewModels;
 using Books.Views;
 using System;
@@ -27,19 +28,33 @@ namespace Books
         {
             Manager.Initialization();
             InitializeComponent();
-            booksList.DataContext = new BooksViewModel();
-            //booksList.DataContext = Manager.books.Values.ToList();
-
+            list.ItemsSource = Manager.books.Values.ToList();
         }
 
         private void ViewChoosed(object sender, SelectionChangedEventArgs e)
         {
-            //if (ViewChoose.SelectedIndex == 0)
-            //    CurrentModelsView = new BooksView();
-            //else if (ViewChoose.SelectedIndex == 1)
-            //    CurrentModelsView = new AuthorsView();
-            //else if (ViewChoose.SelectedIndex == 2)
-            //    CurrentModelsView = new HousesView();
+            if (ViewChoose.SelectedIndex == 0)
+            {
+                if (list != null && list.DataContext != Manager.books.Values.ToList())
+                {
+                    list.ItemsSource = Manager.books.Values.ToList();
+                }
+            }
+            else if (ViewChoose.SelectedIndex == 1)
+            {
+                if (list != null && list.DataContext != Manager.authors.Values.ToList())
+                {
+                    list.ItemsSource = Manager.authors.Values.ToList();
+                }
+            }
+            else if (ViewChoose.SelectedIndex == 2)
+            {
+                if (list != null && list.DataContext != Manager.houses.Values.ToList())
+                {
+                    list.ItemsSource = Manager.houses.Values.ToList();
+                }
+            }
+
         }
 
     }
