@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
         xmlns:models="clr-namespace:Books.Models"
+        xmlns:viewModels="clr-namespace:Books.ViewModels"
         xmlns:converters="clr-namespace:Books.Converters"
         mc:Ignorable="d"
         Title="Rodions Card-File" 
@@ -37,14 +38,14 @@
             <ComboBox x:Name="ViewChoose"
                       HorizontalAlignment="Right"
                       Margin="10"
-                      SelectionChanged="ViewChoosed">
+                      SelectionChanged="ViewSelected">
                 <ComboBoxItem  IsSelected="true">Books</ComboBoxItem>
                 <ComboBoxItem>Authors</ComboBoxItem>
                 <ComboBoxItem>Publication Houses</ComboBoxItem>
             </ComboBox>
-            <ListView x:Name="list" ItemsSource="{Binding}"/>
+            <ListView SelectionChanged="listItemSelected" x:Name="list" ItemsSource="{Binding}"/>
         </StackPanel>
-        <Grid x:Name="BookGrid"
+        <Grid x:Name="bookGrid"
               Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -67,14 +68,13 @@
             <Label Grid.Row="4" Grid.Column="0" Content="Tags:"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Publication Year:"/>
             <Label Grid.Row="6" Grid.Column="0" Content="Publication House:"/>
-
-            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="1" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="2" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="1" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="2" Margin="3" />
-            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" />
+            <TextBlock Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Name}"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Authors}"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding ISBN}"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Margin="3" Text="{Binding Pages}"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Margin="3" Text="{Binding Tags}"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Text="{Binding PublicationYear}"/>
+            <TextBlock Grid.Column="1" Grid.Row="6" Margin="3" Text="{Binding House}"/>
         </Grid>
     </Grid>
 </Window>

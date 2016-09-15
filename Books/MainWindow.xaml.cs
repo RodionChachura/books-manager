@@ -1,4 +1,5 @@
 ﻿using Books.Abstraction;
+using Books.Converters;
 using Books.Models;
 using Books.ViewModels;
 using Books.Views;
@@ -28,10 +29,10 @@ namespace Books
         {
             Manager.Initialization();
             InitializeComponent();
-            list.ItemsSource = Manager.books.Values.ToList();
+            list.ItemsSource = Manager.books.Values.ToList(); 
         }
 
-        private void ViewChoosed(object sender, SelectionChangedEventArgs e)
+        private void ViewSelected(object sender, SelectionChangedEventArgs e)
         {
             if (ViewChoose.SelectedIndex == 0)
             {
@@ -45,6 +46,7 @@ namespace Books
                 if (list != null && list.DataContext != Manager.authors.Values.ToList())
                 {
                     list.ItemsSource = Manager.authors.Values.ToList();
+                    bookGrid.DataContext = new BookViewModel((Book)Manager.books["1984"]);
                 }
             }
             else if (ViewChoose.SelectedIndex == 2)
@@ -57,5 +59,26 @@ namespace Books
 
         }
 
+        private void listItemSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (ViewChoose.SelectedIndex == 0)
+            {
+            }
+            else if (ViewChoose.SelectedIndex == 1)
+            {
+                if (list != null && list.DataContext != Manager.authors.Values.ToList())
+                {
+                    list.ItemsSource = Manager.authors.Values.ToList();
+                    bookGrid.DataContext = new BookViewModel((Book)Manager.books["1984"]);
+                }
+            }
+            else if (ViewChoose.SelectedIndex == 2)
+            {
+                if (list != null && list.DataContext != Manager.houses.Values.ToList())
+                {
+                    list.ItemsSource = Manager.houses.Values.ToList();
+                }
+            }
+        }
     }
 }
