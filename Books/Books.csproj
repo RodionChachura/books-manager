@@ -59,12 +59,17 @@
     <Compile Include="Abstraction\IModel.cs" />
     <Compile Include="Abstraction\IViewModel.cs" />
     <Compile Include="Collections\ModelsCollection.cs" />
+    <Compile Include="Collections\ViewModelsCollection.cs" />
     <Compile Include="Converters\AuthorConverter.cs" />
     <Compile Include="Converters\BookConverter.cs" />
     <Compile Include="Converters\HouseConverter.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BooksViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+    <Compile Include="ViewModels\AuthorsViewModel.cs" />
+    <Compile Include="ViewModels\HousesViewModel.cs" />
+    <Compile Include="ViewModels\HouseViewModel.cs" />
     <Compile Include="Views\AuthorsView.xaml.cs">
       <DependentUpon>AuthorsView.xaml</DependentUpon>
     </Compile>

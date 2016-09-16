@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
         xmlns:models="clr-namespace:Books.Models"
+        xmlns:views="clr-namespace:Books.Views"
         xmlns:viewModels="clr-namespace:Books.ViewModels"
         xmlns:converters="clr-namespace:Books.Converters"
         mc:Ignorable="d"
@@ -16,15 +17,8 @@
         <converters:BookConverter x:Key="bookConverter" />
         <converters:AuthorConverter x:Key="authorConverter" />
         <converters:HouseConverter x:Key="houseConverter" />
-        <DataTemplate DataType="{x:Type models:Book}">
-            <TextBlock Text="{Binding ., Converter={StaticResource bookConverter}}"/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type models:Author}">
-            <TextBlock Text="{Binding ., Converter={StaticResource authorConverter}}"/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type models:House}">
-            <TextBlock Text="{Binding ., Converter={StaticResource houseConverter}}"/>
-        </DataTemplate>
+        
+        
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,18 +29,42 @@
         <StackPanel x:Name="LeftStackPanel"
                     Grid.Column="0"
                     Grid.Row="0">
-            <ComboBox x:Name="ViewChoose"
-                      HorizontalAlignment="Right"
-                      Margin="10"
-                      SelectionChanged="ViewSelected">
-                <ComboBoxItem  IsSelected="true">Books</ComboBoxItem>
-                <ComboBoxItem>Authors</ComboBoxItem>
-                <ComboBoxItem>Publication Houses</ComboBoxItem>
-            </ComboBox>
-            <ListView SelectionChanged="listItemSelected" x:Name="list" ItemsSource="{Binding}"/>
+            <TabControl>
+                <TabItem Header="Books">
+                    <ListView x:Name="booksGrid" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Author(s)" Width="Auto" DisplayMemberBinding="{Binding Authors}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+                <TabItem Header="Authors">
+                    <ListView x:Name="authorsGrid" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Day of Birdth" Width="Auto" DisplayMemberBinding="{Binding DayOfBirdth}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+                <TabItem VerticalContentAlignment="Stretch"  Header="Houses">
+                    <ListView x:Name="housesGrid" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="City" Width="Auto" DisplayMemberBinding="{Binding City}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+            </TabControl>
         </StackPanel>
         <Grid x:Name="bookGrid"
-              Grid.Column="1">
+              Grid.Column="1"
+              DataContext="{Binding SelectedValue, ElementName=booksGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
