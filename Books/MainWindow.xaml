@@ -72,7 +72,6 @@
         
         <ContentControl Name="infoControl"
                         Grid.Row="0"
-                        Grid.Column="1"
-                        Content="{Binding }"/>
+                        Grid.Column="1"/>
     </Grid>
 </Window>
