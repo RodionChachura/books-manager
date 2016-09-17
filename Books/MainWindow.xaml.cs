@@ -34,34 +34,15 @@ namespace Books
             housesGrid.ItemsSource = new HousesViewModel(Manager.houses.Values.ToList().Cast<House>().ToList());
         }
 
-        public IViewModel ViewModel { get; set; }
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //TabControl control = sender as TabControl;
-            //if(control.SelectedIndex == 0)
-            //{
-            //    infoControl.Content = new BookView();
-            //}
-            //else if (((TabControl)sender).SelectedIndex == 1)
-            //{
-            //    infoControl.Content = new AuthorView();
-            //}
-            //else if (((TabControl)sender).SelectedIndex == 2)
-            //{
-            //    infoControl.Content = new HouseView();
-            //}
-        }
 
         private void housesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             infoControl.Content = housesGrid.SelectedValue;
         }
-
         private void authorsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             infoControl.Content = authorsGrid.SelectedValue;
         }
-
         private void booksGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             infoControl.Content = booksGrid.SelectedValue;

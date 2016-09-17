@@ -4,6 +4,24 @@
              xmlns:local="clr-namespace:Books"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--<Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>-->
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        </Style>
+        
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+        <Style x:Key="Title" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Purple"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>
+

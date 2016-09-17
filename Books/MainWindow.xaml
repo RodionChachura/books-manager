@@ -33,15 +33,15 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel x:Name="LeftStackPanel"
+        <DockPanel x:Name="LeftStackPanel"
                     Grid.Column="0"
                     Grid.Row="0">
-            <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabControl>
                 <TabItem Header="Books">
                     <ListView x:Name="booksGrid" ItemsSource="{Binding}" SelectionChanged="booksGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
                                 <GridViewColumn Header="Author(s)" Width="Auto" DisplayMemberBinding="{Binding Authors}" />
                             </GridView>
                         </ListView.View>
@@ -68,11 +68,11 @@
                     </ListView>
                 </TabItem>
             </TabControl>
-        </StackPanel>
+        </DockPanel>
         
         <ContentControl Name="infoControl"
                         Grid.Row="0"
                         Grid.Column="1"
-                        Content="{Binding }" />
+                        Content="{Binding }"/>
     </Grid>
 </Window>
