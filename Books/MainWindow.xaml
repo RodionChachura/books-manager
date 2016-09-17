@@ -17,8 +17,15 @@
         <converters:BookConverter x:Key="bookConverter" />
         <converters:AuthorConverter x:Key="authorConverter" />
         <converters:HouseConverter x:Key="houseConverter" />
-        
-        
+        <DataTemplate DataType="{x:Type viewModels:BookViewModel}">
+            <views:BookView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:AuthorViewModel}">
+            <views:AuthorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:HouseViewModel}">
+            <views:HouseView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,9 +36,9 @@
         <StackPanel x:Name="LeftStackPanel"
                     Grid.Column="0"
                     Grid.Row="0">
-            <TabControl>
+            <TabControl SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Books">
-                    <ListView x:Name="booksGrid" ItemsSource="{Binding}">
+                    <ListView x:Name="booksGrid" ItemsSource="{Binding}" SelectionChanged="booksGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}" />
@@ -41,7 +48,7 @@
                     </ListView>
                 </TabItem>
                 <TabItem Header="Authors">
-                    <ListView x:Name="authorsGrid" ItemsSource="{Binding}">
+                    <ListView x:Name="authorsGrid" ItemsSource="{Binding}" SelectionChanged="authorsGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
@@ -51,7 +58,7 @@
                     </ListView>
                 </TabItem>
                 <TabItem VerticalContentAlignment="Stretch"  Header="Houses">
-                    <ListView x:Name="housesGrid" ItemsSource="{Binding}">
+                    <ListView x:Name="housesGrid" ItemsSource="{Binding}" SelectionChanged="housesGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
@@ -62,37 +69,10 @@
                 </TabItem>
             </TabControl>
         </StackPanel>
-        <Grid x:Name="bookGrid"
-              Grid.Column="1"
-              DataContext="{Binding SelectedValue, ElementName=booksGrid}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            
-            <Label Grid.Row="0" Grid.Column="0" Content="Title:"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Author(s):"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="ISBN:"/>
-            <Label Grid.Row="3" Grid.Column="0" Content="Pages:"/>
-            <Label Grid.Row="4" Grid.Column="0" Content="Tags:"/>
-            <Label Grid.Row="5" Grid.Column="0" Content="Publication Year:"/>
-            <Label Grid.Row="6" Grid.Column="0" Content="Publication House:"/>
-            <TextBlock Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Name}"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Authors}"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding ISBN}"/>
-            <TextBlock Grid.Column="1" Grid.Row="3" Margin="3" Text="{Binding Pages}"/>
-            <TextBlock Grid.Column="1" Grid.Row="4" Margin="3" Text="{Binding Tags}"/>
-            <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Text="{Binding PublicationYear}"/>
-            <TextBlock Grid.Column="1" Grid.Row="6" Margin="3" Text="{Binding House}"/>
-        </Grid>
+        
+        <ContentControl Name="infoControl"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="{Binding }" />
     </Grid>
 </Window>

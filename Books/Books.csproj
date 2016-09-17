@@ -70,14 +70,14 @@
     <Compile Include="ViewModels\AuthorsViewModel.cs" />
     <Compile Include="ViewModels\HousesViewModel.cs" />
     <Compile Include="ViewModels\HouseViewModel.cs" />
-    <Compile Include="Views\AuthorsView.xaml.cs">
-      <DependentUpon>AuthorsView.xaml</DependentUpon>
+    <Compile Include="Views\AuthorView.xaml.cs">
+      <DependentUpon>AuthorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HousesView.xaml.cs">
-      <DependentUpon>HousesView.xaml</DependentUpon>
+    <Compile Include="Views\BookView.xaml.cs">
+      <DependentUpon>BookView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BooksView.xaml.cs">
-      <DependentUpon>BooksView.xaml</DependentUpon>
+    <Compile Include="Views\HouseView.xaml.cs">
+      <DependentUpon>HouseView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,15 +91,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AuthorsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\AuthorView.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\HousesView.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\BooksView.xaml">
+    <Page Include="Views\BookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HouseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
