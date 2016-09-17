@@ -25,11 +25,15 @@
         <Style x:Key="RemoveButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Red"/>
             <Setter Property="Content" Value="Remove"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin"   Value="5"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="ChangeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Yellow"/>
             <Setter Property="Content" Value="Change"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin"   Value="5"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Application.Resources>

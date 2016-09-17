@@ -33,7 +33,7 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel x:Name="LeftStackPanel"
+        <DockPanel x:Name="leftDockPanel"
                     Grid.Column="0"
                     Grid.Row="0">
             <TabControl>
@@ -69,9 +69,14 @@
                 </TabItem>
             </TabControl>
         </DockPanel>
-        
-        <ContentControl Name="infoControl"
-                        Grid.Row="0"
-                        Grid.Column="1"/>
+
+
+        <DockPanel x:Name="rigtDockPanel"
+                    Grid.Column="1"
+                    Grid.Row="0">
+            <ContentControl Name="infoControl" DockPanel.Dock="Top"/>
+            <Button Content="Add" Foreground="White" Background="LightGreen" FontSize="20" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="10"/>
+        </DockPanel>
+            
     </Grid>
 </Window>
