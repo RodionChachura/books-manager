@@ -36,6 +36,14 @@
             <Setter Property="Margin"   Value="5"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="GreenButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="DockPanel.Dock" Value="Bottom"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>    
     </Application.Resources>
 </Application>
 
