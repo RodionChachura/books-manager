@@ -13,7 +13,7 @@ namespace Books.Models
         }
         public string Name { get; set; }
         public DateTime DayOfBirdth { get; set; }
-        public Image Photo { get; set; }
+        public string Photo { get; set; }
         public List <Book> Books { get; private set; }
     }
 }
