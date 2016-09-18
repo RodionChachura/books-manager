@@ -47,5 +47,12 @@ namespace Books
         {
             infoControl.Content = booksGrid.SelectedValue;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddHouse addHouse = new AddHouse();
+            addHouse.Show();
+            Hide();
+        }
     }
 }

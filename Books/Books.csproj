@@ -74,6 +74,9 @@
     <Compile Include="ViewModels\AuthorsViewModel.cs" />
     <Compile Include="ViewModels\HousesViewModel.cs" />
     <Compile Include="ViewModels\HouseViewModel.cs" />
+    <Compile Include="Views\AddHouse.xaml.cs">
+      <DependentUpon>AddHouse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AuthorView.xaml.cs">
       <DependentUpon>AuthorView.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddHouse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AuthorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
