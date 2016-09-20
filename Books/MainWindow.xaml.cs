@@ -12,7 +12,6 @@ namespace Books
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
 

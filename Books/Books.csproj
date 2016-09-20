@@ -64,6 +64,7 @@
     <Compile Include="Abstraction\IViewModel.cs" />
     <Compile Include="Collections\ModelsCollection.cs" />
     <Compile Include="Collections\ViewModelsCollection.cs" />
+    <Compile Include="Commands\SaveHouseCommand.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
@@ -145,9 +146,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
