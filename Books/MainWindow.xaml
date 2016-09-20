@@ -12,7 +12,9 @@
         Title="Rodions Card-File" 
         WindowStartupLocation="CenterScreen"
         Height="500" Width="750">
-
+    <Window.DataContext>
+        <viewModels:MainViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <converters:BookConverter x:Key="bookConverter" />
         <converters:AuthorConverter x:Key="authorConverter" />
@@ -38,7 +40,7 @@
                     Grid.Row="0">
             <TabControl>
                 <TabItem Header="Books">
-                    <ListView x:Name="booksGrid" ItemsSource="{Binding}" SelectionChanged="booksGrid_SelectionChanged">
+                    <ListView x:Name="booksGrid" ItemsSource="{Binding BooksViewModel}" SelectionChanged="booksGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
@@ -48,7 +50,7 @@
                     </ListView>
                 </TabItem>
                 <TabItem Header="Authors">
-                    <ListView x:Name="authorsGrid" ItemsSource="{Binding}" SelectionChanged="authorsGrid_SelectionChanged">
+                    <ListView x:Name="authorsGrid" ItemsSource="{Binding AuthorsViewModel}" SelectionChanged="authorsGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
@@ -58,7 +60,7 @@
                     </ListView>
                 </TabItem>
                 <TabItem VerticalContentAlignment="Stretch"  Header="Houses">
-                    <ListView x:Name="housesGrid" ItemsSource="{Binding}" SelectionChanged="housesGrid_SelectionChanged">
+                    <ListView x:Name="housesGrid" ItemsSource="{Binding HousesViewModel}" SelectionChanged="housesGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />

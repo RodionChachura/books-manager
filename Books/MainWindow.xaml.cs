@@ -27,11 +27,8 @@ namespace Books
     {
         public MainWindow()
         {
-            Manager.Initialization();
             InitializeComponent();
-            booksGrid.ItemsSource = new BooksViewModel(Manager.books.Values.ToList().Cast<Book>().ToList());
-            authorsGrid.ItemsSource = new AuthorsViewModel(Manager.authors.Values.ToList().Cast<Author>().ToList());
-            housesGrid.ItemsSource = new HousesViewModel(Manager.houses.Values.ToList().Cast<House>().ToList());
+            
         }
 
 
