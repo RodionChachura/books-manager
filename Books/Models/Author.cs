@@ -9,11 +9,11 @@ namespace Books.Models
     {
         public Author()
         {
-            Books = new List<Book>();
+            Books = new List<string>();
         }
         public string Name { get; set; }
         public DateTime DayOfBirdth { get; set; }
         public string Photo { get; set; }
-        public List <Book> Books { get; private set; }
+        public List <string> Books { get; set; }
     }
 }

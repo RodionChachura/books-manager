@@ -8,15 +8,15 @@ namespace Books.Models
     {
         public Book()
         {
-            Authors = new List<Author>();
+            Authors = new List<string>();
             Tags = new List<string>();
         }
         public string Name { get; set; }
-        public List<Author> Authors { get; set; }
+        public List<string> Authors { get; set; }
         public string ISBN { get; set; }
         public int Pages { get; set; }
         public List<string> Tags { get; set; }
         public int PublicationYear { get; set; }
-        public House House { get; set; }
+        public string House { get; set; }
     }
 }

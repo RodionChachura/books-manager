@@ -7,7 +7,6 @@
         xmlns:models="clr-namespace:Books.Models"
         xmlns:views="clr-namespace:Books.Views"
         xmlns:viewModels="clr-namespace:Books.ViewModels"
-        xmlns:converters="clr-namespace:Books.Converters"
         mc:Ignorable="d"
         Title="Rodions Card-File" 
         WindowStartupLocation="CenterScreen"
@@ -16,9 +15,6 @@
         <viewModels:MainViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <converters:BookConverter x:Key="bookConverter" />
-        <converters:AuthorConverter x:Key="authorConverter" />
-        <converters:HouseConverter x:Key="houseConverter" />
         <DataTemplate DataType="{x:Type viewModels:BookViewModel}">
             <views:BookView/>
         </DataTemplate>

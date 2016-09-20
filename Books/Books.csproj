@@ -64,13 +64,8 @@
     <Compile Include="Abstraction\IViewModel.cs" />
     <Compile Include="Collections\ModelsCollection.cs" />
     <Compile Include="Collections\ViewModelsCollection.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Converters\AuthorConverter.cs" />
-    <Compile Include="Converters\BookConverter.cs" />
-    <Compile Include="Converters\HouseConverter.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
-    <Compile Include="Manager.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BooksViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
