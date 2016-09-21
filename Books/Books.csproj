@@ -63,6 +63,8 @@
     <Compile Include="Abstraction\IModel.cs" />
     <Compile Include="Abstraction\IViewModel.cs" />
     <Compile Include="Collections\ModelsCollection.cs" />
+    <Compile Include="Collections\ObservableDictionary.cs" />
+    <Compile Include="Collections\ViewModelsandModelsCollection.cs" />
     <Compile Include="Collections\ViewModelsCollection.cs" />
     <Compile Include="Commands\SaveHouseCommand.cs" />
     <Compile Include="DataManager.cs" />
