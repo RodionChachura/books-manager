@@ -14,7 +14,6 @@ namespace Books
             InitializeComponent();
         }
 
-
         private void housesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             infoControl.Content = housesGrid.SelectedValue;
@@ -28,10 +27,22 @@ namespace Books
             infoControl.Content = booksGrid.SelectedValue;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void AddBookButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook addBook = new AddBook();
+            addBook.Show();
+            Hide();
+        }
+        private void AddHouseButton_Click(object sender, RoutedEventArgs e)
         {
             AddHouse addHouse = new AddHouse();
             addHouse.Show();
+            Hide();
+        }
+        private void AddAuthorButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddAuthor addAuthor = new AddAuthor();
+            addAuthor.Show();
             Hide();
         }
     }

@@ -72,9 +72,30 @@
                     Grid.Column="1"
                     Grid.Row="0">
             <ContentControl Name="infoControl" DockPanel.Dock="Top"/>
-            <Button x:Name="addButton" Content="Add" 
-                    Style="{StaticResource GreenButton}"
-                    Margin="10" Click="AddButton_Click"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Button x:Name="addBookButton" Content="Book" 
+                        Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource GreenButton}"
+                        Margin="10" Click="AddBookButton_Click"/>
+                <Button x:Name="addAuthorButton" Content="Author" 
+                        Grid.Row="0" Grid.Column="1"
+                        Style="{StaticResource GreenButton}"
+                        Margin="10" Click="AddAuthorButton_Click"/>
+                <Button x:Name="addHouseButton" Content="House" 
+                        Grid.Row="0" Grid.Column="2"
+                        Style="{StaticResource GreenButton}"
+                        Margin="10" Click="AddHouseButton_Click"/>
+            </Grid>
         </DockPanel>
             
     </Grid>

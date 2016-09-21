@@ -42,11 +42,8 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="DockPanel.Dock" Value="Bottom"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
-
-
-
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -56,6 +53,7 @@
                                                 RelativeSource={RelativeSource TemplatedParent}, 
                                                 Mode=TwoWay,
                                                 UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap"
                                  x:Name="textSource" 
                                  Background="Transparent" 
                                  Panel.ZIndex="2" />
