@@ -36,6 +36,7 @@ namespace Books
         }
         private void AddHouseButton_Click(object sender, RoutedEventArgs e)
         {
+            string s = "S";
             AddHouse addHouse = new AddHouse();
             addHouse.Show();
             Hide();

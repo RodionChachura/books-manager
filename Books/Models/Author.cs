@@ -50,8 +50,6 @@ namespace Books.Models
                 error = "Name can't be empty";
             else if (Name.Length < 1 || Name.Length > 50)
                 error = "Invalid name size";
-            else if (DataManager.Authors.ContainsKey(Name))
-                error = "Database already contains author whith this name";
             else
                 error = "";
         }
