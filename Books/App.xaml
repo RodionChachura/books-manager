@@ -22,21 +22,7 @@
             <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-        <Style x:Key="RemoveButton" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Red"/>
-            <Setter Property="Content" Value="Remove"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin"   Value="5"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ChangeButton" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Yellow"/>
-            <Setter Property="Content" Value="Change"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin"   Value="5"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="GreenButton" TargetType="{x:Type Button}">
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="LightGreen"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>

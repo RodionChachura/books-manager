@@ -39,8 +39,8 @@
                     <ListView x:Name="booksGrid" ItemsSource="{Binding BooksViewModel}" SelectionChanged="booksGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Header="Author(s)" Width="Auto" DisplayMemberBinding="{Binding Authors}" />
+                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Path=Name}"/>
+                                <GridViewColumn Header="Author(s)" Width="Auto" DisplayMemberBinding="{Binding Path=Authors}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -85,15 +85,12 @@
 
                 <Button x:Name="addBookButton" Content="Book" 
                         Grid.Row="0" Grid.Column="0"
-                        Style="{StaticResource GreenButton}"
                         Margin="10" Click="AddBookButton_Click"/>
                 <Button x:Name="addAuthorButton" Content="Author" 
                         Grid.Row="0" Grid.Column="1"
-                        Style="{StaticResource GreenButton}"
                         Margin="10" Click="AddAuthorButton_Click"/>
                 <Button x:Name="addHouseButton" Content="House" 
                         Grid.Row="0" Grid.Column="2"
-                        Style="{StaticResource GreenButton}"
                         Margin="10" Click="AddHouseButton_Click"/>
             </Grid>
         </DockPanel>

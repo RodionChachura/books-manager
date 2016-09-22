@@ -62,10 +62,14 @@
     </ApplicationDefinition>
     <Compile Include="Abstraction\IModel.cs" />
     <Compile Include="Abstraction\IViewModel.cs" />
-    <Compile Include="Collections\ModelsCollection.cs" />
+    <Compile Include="Collections\AuthorsCollection.cs" />
+    <Compile Include="Collections\BooksCollection.cs" />
+    <Compile Include="Collections\HousesCollection.cs" />
     <Compile Include="Collections\ObservableDictionary.cs" />
     <Compile Include="Collections\ViewModelsandModelsCollection.cs" />
-    <Compile Include="Collections\ViewModelsCollection.cs" />
+    <Compile Include="Commands\RemoveAuthorCommand.cs" />
+    <Compile Include="Commands\RemoveBookCommand.cs" />
+    <Compile Include="Commands\RemoveHouseCommand.cs" />
     <Compile Include="Commands\SaveAuthorCommand.cs" />
     <Compile Include="Commands\SaveBookCommand.cs" />
     <Compile Include="Commands\SaveHouseCommand.cs" />
