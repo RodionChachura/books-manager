@@ -1,0 +1,54 @@
+﻿<Window x:Class="Books.Views.AddAuthor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Add Author" Height="363" Width="450">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip" 
+	                            Value="{Binding RelativeSource={RelativeSource Self},
+                                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Name:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5"
+                Text="{Binding Path=Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Day Of Birdth:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5"
+                Style="{StaticResource placeHolder}" Tag="Date format: date/month/year"
+                Text="{Binding Path=DayOfBirdth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Book(s):" Margin="0,19,0,-19"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5, 5, 5, -190" MaxHeight="190" 
+                Style="{StaticResource placeHolder}" Tag="For input more than one book use comma with two whitespace between books names. Example: War and Peace,  Anna Karenina"
+                Text="{Binding Path=Books, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Button x:Name="saveButton" 
+                Command="{Binding Path=SaveCommand}" Content="_Save"
+                IsEnabled="{Binding Path=AllPropertiesValid}" Click="SaveButton_Click"/>
+    </DockPanel>
+</Window>
