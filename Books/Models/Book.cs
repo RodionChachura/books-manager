@@ -38,15 +38,13 @@ namespace Books.Models
             {
                 switch (propertyName)
                 {
-                    case "Name": ValidateName(); break;
-                    case "Authors": ValidateAuthors(); break;
-                    case "ISBN": ValidateISBN(); break;
-                    case "Pages": ValidatePages(); break;
-                    case "Tags": ValidateTags(); break;
-                    case "PublicationYear": ValidatePublicationYear(); break;
-                    case "House": ValidateHouse(); break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on House.");
+                    case nameof(Name)           : ValidateName(); break;
+                    case nameof(Authors)        : ValidateAuthors(); break;
+                    case nameof(ISBN)           : ValidateISBN(); break;
+                    case nameof(Pages)          : ValidatePages(); break;
+                    case nameof(Tags)           : ValidateTags(); break;
+                    case nameof(PublicationYear): ValidatePublicationYear(); break;
+                    case nameof(House)          : ValidateHouse(); break;
                 }
                 return error;
             }

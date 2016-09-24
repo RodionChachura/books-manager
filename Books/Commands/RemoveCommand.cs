@@ -9,7 +9,7 @@ namespace Books.Commands
 {
     class RemoveCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged { add { } remove { } }
         string name;
         DataManager.Type type;
         public RemoveCommand(DataManager.Type type, string name)
@@ -27,13 +27,16 @@ namespace Books.Commands
             switch (type)
             {
                 case DataManager.Type.Book:
-                    DataManager.RemoveBook(name);
+                    if (DataManager.Books.ContainsKey(name))
+                        DataManager.RemoveBook(name);
                     break;
                 case DataManager.Type.Author:
-                    DataManager.RemoveAuthor(name);
+                    if (DataManager.Authors.ContainsKey(name))
+                        DataManager.RemoveAuthor(name);
                     break;
                 case DataManager.Type.House:
-                    DataManager.RemoveHouse(name);
+                    if (DataManager.Houses.ContainsKey(name))
+                        DataManager.RemoveHouse(name);
                     break;
             }
         }

@@ -35,8 +35,6 @@ namespace Books.Models
                     case "Name": ValidateName(); break;
                     case "City": ValidateCity(); break;
                     case "Books": ValidateBooks(); break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on House.");
                 }
                 return error;
             }

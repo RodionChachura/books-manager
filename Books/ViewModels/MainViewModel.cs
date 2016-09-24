@@ -1,4 +1,7 @@
-﻿namespace Books.ViewModels
+﻿using Books.Commands;
+using System.Windows.Input;
+
+namespace Books.ViewModels
 {
     public class MainViewModel
     {
@@ -11,6 +14,14 @@
             BooksViewModel = new BooksViewModel(DataManager.Books);
             AuthorsViewModel = new AuthorsViewModel(DataManager.Authors);
             HousesViewModel = new HousesViewModel(DataManager.Houses);
+        }
+
+        public ICommand RestoreCommand
+        {
+            get
+            {
+                return new RestoreCommand();
+            }
         }
 
     }

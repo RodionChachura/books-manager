@@ -13,10 +13,11 @@ namespace Books.Views
             InitializeComponent();
         }
 
+
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
             AddHouse addHouse = new AddHouse();
-            //addHouse.DataContext = DataContext;
+            addHouse.DataContext = DataContext;
             addHouse.Show();
             App.Current.MainWindow.Hide();
         }

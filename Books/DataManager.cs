@@ -21,16 +21,31 @@ namespace Books
         static DataManager()
         {
             filesManager = new FilesManager();
+            filesManager.Backup();
+            Authors = new AuthorsCollection();
+            Houses = new HousesCollection();
+            Books = new BooksCollection();
 
             AuthorsInit();
             HousesInit(); 
             BooksInit();
         }
 
+        public static void RestoreData()
+        {
+            filesManager.Restore();
+
+            Books.Clear();
+            Authors.Clear();
+            Houses.Clear();
+            AuthorsInit();
+            HousesInit();
+            BooksInit();
+        }
+
         #region Initialization
         static void AuthorsInit()
         {
-            Authors = new AuthorsCollection();
             foreach (string[] fields in filesManager.GetStringModelsOfAuthors())
             {
                 Author author = new Author();
@@ -48,7 +63,6 @@ namespace Books
         }
         static void HousesInit()
         {
-            Houses = new HousesCollection();
             foreach (string[] fields in filesManager.GetStringModelsOfHouses())
             {
                 House house = new House()
@@ -61,7 +75,6 @@ namespace Books
         }
         static void BooksInit()
         {
-            Books = new BooksCollection();
             foreach (string[] fields in filesManager.GetStringModelsOfBooks())
             {
                 Book book = new Book();
@@ -121,25 +134,19 @@ namespace Books
         #region Add/Remove authors from data(collection && file)
         static public void AddBook(Book book)
         {
-            //filesManager.AddBookInFile(book);
+            
             foreach (string author in book.Authors)
             {
                 if (!Authors.ContainsKey(author))
-                {
-                    Author newAuthor = new Author() { Name = author };
-                    newAuthor.Books.Add(author);
-                    Authors.Add(newAuthor);
-                }
-                else
-                    Authors[author].Books.Add(book.Name);
+                    Authors.Add(new Author() { Name = author });
+                 Authors[author].Books.Add(book.Name);
             }
             if (!Houses.ContainsKey(book.House))
-            {
-                House newHouse = new House() { Name = book.House };
-                newHouse.Books.Add(book.House);
-                Houses.Add(new House { Name = book.House });
-            }
+                Houses.Add(new House() { Name = book.House });
             Houses[book.House].Books.Add(book.Name);
+
+            Books.Add(book);
+            filesManager.AddBookInFile(book);
         }
         static public void RemoveBook(string book)
         {
@@ -147,63 +154,50 @@ namespace Books
             {
                 Authors[author].Books.Remove(book);
             }
-            if(Houses.ContainsKey(book))
-                Houses[book].Books.Remove(book);
+            if(Houses.ContainsKey(Books[book].House))
+                Houses[Books[book].House].Books.Remove(book);
             Books.Remove(book);
-            //filesManager.RemoveBookFromFile(book);
+            filesManager.RemoveBookFromFile(book);
         }
         static public void AddHouse(House house)
         {
             foreach (string book in house.Books)
             {
-                if (Books.ContainsKey(book))
-                {
-                    Books[book].House = house.Name;
-                }
-                else
-                {
-                    Book newBook = new Book() { Name = book };
-                    newBook.House = house.Name;
-                    Books.Add(newBook);
-                }
+                if (!Books.ContainsKey(book))
+                    Books.Add(new Book() { Name = book });
+                Books[book].House = house.Name;
             }
             Houses.Add(house);
-            //filesManager.AddHouseInFile(house);
+            filesManager.AddHouseInFile(house);
         }
         static public void RemoveHouse(string house)
         {
             foreach (string book in Houses[house].Books)
             {
-                Books[book].House = null;
+                Books[book].House = "";
             }
             Houses.Remove(house);
-            //filesManager.RemoveHouseFromFile(house);
+            filesManager.RemoveHouseFromFile(house);
         }
         static public void AddAuthor(Author author)
         {
             foreach (string book in author.Books)
             {
                 if (!Books.ContainsKey(book))
-                {
-                    Book newBook = new Book { Name = book };
-                    newBook.Authors.Add(author.Name);
-                    Books.Add(newBook);
-                }
-                else
-                {
-                    Books[book].Authors.Add(author.Name);
-                }
+                    Books.Add(new Book { Name = book });
+                Books[book].Authors.Add(author.Name);
             }
             Authors.Add(author);
-            //filesManager.AddAuthorInFile(author);
+            filesManager.AddAuthorInFile(author);
         }
         static public void RemoveAuthor(string author)
         {
             foreach (string book in Authors[author].Books)
             {
-                Books[book].Authors.Remove(Authors[author].Name);
+                Books[book].Authors.Remove(author);
             }
             Authors.Remove(author);
+            filesManager.RemoveAuthorFromFile(author);
         }
         #endregion
     }

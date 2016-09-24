@@ -4,20 +4,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.IO.Compression;
 
 namespace Books
 {
     public class FilesManager
     {
         #region Constatnts
-        readonly static string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
+        static readonly string path = AppDomain.CurrentDomain.BaseDirectory;
+        static readonly string dataPath = Path.Combine(path, "data");
+        static readonly string backupData = Path.Combine(path, "backup.zip");
 
         static readonly string separator = Environment.NewLine + Environment.NewLine;
         static readonly string booksData = Path.Combine(dataPath, "books.txt");
         static readonly string authorsData = Path.Combine(dataPath, "authors.txt");
-        public static readonly string authorsPhotosData = Path.Combine(dataPath, "authorsPhotos");
-        public static readonly string unknownAuthorPhoto = Path.Combine(authorsPhotosData, "unknown.jpg");
         static readonly string housesData = Path.Combine(dataPath, "houses.txt");
+        public static readonly string authorsPhotosData = Path.Combine(path, "authorsPhotos");
+        public static readonly string unknownAuthorPhoto = Path.Combine(authorsPhotosData, "unknown.jpg");
 
         const int authorsFields = 2;
         const int housesFields = 2;
@@ -30,6 +33,7 @@ namespace Books
             Directory.CreateDirectory(authorsPhotosData);
         }
 
+        #region Helping Methods
         public static string[] SplitByRegex(string text, string delim)
         {
             Regex regex = new Regex(delim);
@@ -67,7 +71,39 @@ namespace Books
 
             return models;
         }
+        private void SaveFieldsInFile(string[] fields, string filePath)
+        {
+            string text = separator + string.Join(Environment.NewLine, fields);
+            using (StreamWriter sw = File.AppendText(housesData))
+            {
+                sw.WriteLine(text);
+            }
+        }
+        private void RemoveFieldsFromFile(string name, string filePath, int numberOfFields)
+        {
+            List<string> lines = File.ReadAllLines(filePath).ToList();
+            int index = lines.IndexOf(name);
+            if (index != -1)
+            {
+                lines.RemoveRange((index == 0) ? index : index - 1, numberOfFields + 1);
+                File.WriteAllLines(filePath, lines);
+            }
+        }
+        #endregion
 
+        #region Backup
+        public void Backup()
+        {
+            File.Delete(backupData);
+            ZipFile.CreateFromDirectory(dataPath, backupData);
+        }
+        public void Restore()
+        {
+            Directory.Delete(dataPath, true);
+            ZipFile.ExtractToDirectory(backupData, dataPath);
+        }
+        #endregion
+        
         #region Get string representations of models
         public List<string[]> GetStringModelsOfHouses()
         {
@@ -97,18 +133,11 @@ namespace Books
                 book.House
             };
 
-            string text = string.Join(Environment.NewLine, fields) + separator;
-            File.AppendText(booksData).Write(text);
+            SaveFieldsInFile(fields, booksData);
         }
         public void RemoveBookFromFile(string book)
         {
-            List<string> lines = File.ReadAllLines(booksData).ToList();
-            int index = lines.IndexOf(book);
-            if (index != -1)
-            {
-                lines.RemoveRange(index, booksFields + 1);
-                File.WriteAllLines(booksData, lines);
-            }
+            RemoveFieldsFromFile(book, booksData, booksFields);
         }
         public void AddAuthorInFile(Author author)
         {
@@ -118,18 +147,11 @@ namespace Books
                 author.DayOfBirdth.ToString()
             };
 
-            string text = string.Join(Environment.NewLine, fields) + separator;
-            File.AppendText(authorsData).Write(text);
+            SaveFieldsInFile(fields, authorsData);
         }
         public void RemoveAuthorFromFile(string author)
         {
-            List<string> lines = File.ReadAllLines(authorsData).ToList();
-            int index = lines.IndexOf(author);
-            if (index != -1)
-            {
-                lines.RemoveRange(index, authorsFields + 1);
-                File.WriteAllLines(authorsData, lines);
-            }
+            RemoveFieldsFromFile(author, authorsData, authorsFields);
         }
         public void AddHouseInFile(House house)
         {
@@ -138,19 +160,11 @@ namespace Books
                 house.Name,
                 house.City
             };
-
-            string text = string.Join(Environment.NewLine, fields) + separator;
-            File.AppendText(housesData).Write(text);
+            SaveFieldsInFile(fields, housesData);
         }
         public void RemoveHouseFromFile(string house)
         {
-            List<string> lines = File.ReadAllLines(housesData).ToList();
-            int index = lines.IndexOf(house);
-            if (index != -1)
-            {
-                lines.RemoveRange(index, housesFields + 1);
-                File.WriteAllLines(housesData, lines);
-            }
+            RemoveFieldsFromFile(house, housesData, housesFields);
         }
         #endregion
     }

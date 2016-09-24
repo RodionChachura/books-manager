@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 
 namespace Books.Models
 {
@@ -37,8 +36,6 @@ namespace Books.Models
                     case "Name": ValidateName(); break;
                     case "DayOfBirdth": ValidateDayOfBirdth(); break;
                     case "Books": ValidateBooks(); break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on House.");
                 }
                 return error;
             }

@@ -25,13 +25,19 @@
             <views:HouseView/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Settings">
+                <MenuItem Header="_Restore start data" Command="{Binding Path=RestoreCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
 
-        <DockPanel x:Name="leftDockPanel"
+            <DockPanel x:Name="leftDockPanel"
                     Grid.Column="0"
                     Grid.Row="0">
             <TabControl>
@@ -68,32 +74,33 @@
             </TabControl>
         </DockPanel>
 
-        <DockPanel x:Name="rigtDockPanel"
+            <DockPanel x:Name="rigtDockPanel"
                     Grid.Column="1"
                     Grid.Row="0">
-            <ContentControl Name="infoControl" DockPanel.Dock="Top"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+
+                <ContentControl Name="infoControl" DockPanel.Dock="Top"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
 
-                <Button x:Name="addBookButton" Content="Book" 
+                    <Button x:Name="addBookButton" Content="Book" 
                         Grid.Row="0" Grid.Column="0"
                         Margin="10" Click="AddBookButton_Click"/>
-                <Button x:Name="addAuthorButton" Content="Author" 
+                    <Button x:Name="addAuthorButton" Content="Author" 
                         Grid.Row="0" Grid.Column="1"
                         Margin="10" Click="AddAuthorButton_Click"/>
-                <Button x:Name="addHouseButton" Content="House" 
+                    <Button x:Name="addHouseButton" Content="House" 
                         Grid.Row="0" Grid.Column="2"
                         Margin="10" Click="AddHouseButton_Click"/>
-            </Grid>
-        </DockPanel>
-            
-    </Grid>
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
 </Window>

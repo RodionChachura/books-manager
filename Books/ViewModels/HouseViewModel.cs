@@ -134,8 +134,6 @@ namespace Books.ViewModels
         {
             get
             {
-                if (DataManager.Houses.ContainsKey(Name))
-                    DataManager.RemoveHouse(Name);
                 return new SaveCommand(DataManager.Type.House, model);
             }
         }
@@ -147,7 +145,6 @@ namespace Books.ViewModels
                 return new RemoveCommand(DataManager.Type.House, model.Name);
             }
         }
-
         #endregion
     }
 }

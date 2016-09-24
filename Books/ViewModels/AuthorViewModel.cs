@@ -17,7 +17,10 @@ namespace Books.ViewModels
         public IModel Model
         {
             get { return model; }
-            set { model = (Author)value; }
+            set
+            {
+                model = (Author)value;
+            }
         }
         public AuthorViewModel()
         {
@@ -159,8 +162,6 @@ namespace Books.ViewModels
         {
             get
             {
-                if (DataManager.Authors.ContainsKey(Name))
-                    DataManager.RemoveAuthor(Name);
                 return new SaveCommand(DataManager.Type.Author, model);
             }
         }

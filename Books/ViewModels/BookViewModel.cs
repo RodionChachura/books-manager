@@ -1,7 +1,6 @@
 ﻿using Books.Abstraction;
 using Books.Commands;
 using Books.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
@@ -20,12 +19,13 @@ namespace Books.ViewModels
         public BookViewModel()
         {
             validProperties = new Dictionary<string, bool>();
-            validProperties.Add("Name", false);
-            validProperties.Add("Authors", false);
-            validProperties.Add("ISBN", false);
-            validProperties.Add("Pages", false);
-            validProperties.Add("PublicationYear", false);
-            validProperties.Add("House", false);
+            validProperties.Add(nameof(Name), false);
+            validProperties.Add(nameof(Authors), false);
+            validProperties.Add(nameof(ISBN), false);
+            validProperties.Add(nameof(Pages), false);
+            validProperties.Add(nameof(Tags), false);
+            validProperties.Add(nameof(PublicationYear), false);
+            validProperties.Add(nameof(House), false);
         }
 
         #region Properties
@@ -174,11 +174,10 @@ namespace Books.ViewModels
         {
             get
             {
-                if (DataManager.Books.ContainsKey(Name))
-                    DataManager.RemoveBook(Name);
                 return new SaveCommand(DataManager.Type.Book, model);
             }
         }
+
         public ICommand RemoveCommand
         {
             get
@@ -186,6 +185,7 @@ namespace Books.ViewModels
                 return new RemoveCommand(DataManager.Type.Book, model.Name);
             }
         }
+
         #endregion
     }
 }
