@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Books.Models
 {
-    public class Book : IModel, IDataErrorInfo
+    [Serializable]
+    public class Book : IModel, IDataErrorInfo, ISerializable
     {
         public Book()
         {
             Authors = new List<string>();
             Tags = new List<string>();
         }
+
 
         #region Properties
         public string Name { get; set; }
@@ -23,14 +27,20 @@ namespace Books.Models
         public int PublicationYear { get; set; }
         public string House { get; set; }
         #endregion
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue(nameof(Name), Name);
+            info.AddValue(nameof(Authors), Authors);
+            info.AddValue(nameof(ISBN), ISBN);
+            info.AddValue(nameof(Pages), Pages);
+            info.AddValue(nameof(Tags), Tags);
+            info.AddValue(nameof(PublicationYear), PublicationYear);
+            info.AddValue(nameof(House), House);
+        }
 
         #region Validation
-        private string error;
-        public string Error
-        {
-            get { return error; }
-            private set { error = value; }
-        }
+        [XmlIgnore]
+        public string Error { get; private set; }
 
         public string this[string propertyName]
         {
@@ -46,67 +56,67 @@ namespace Books.Models
                     case nameof(PublicationYear): ValidatePublicationYear(); break;
                     case nameof(House)          : ValidateHouse(); break;
                 }
-                return error;
+                return Error;
             }
         }
 
         void ValidateName()
         {
             if (string.IsNullOrEmpty(Name))
-                error = "Name can't be empty";
+                Error = "Name can't be empty";
             else if (Name.Length < 1 || Name.Length > 50)
-                error = "Invalid name size";
+                Error = "Invalid name size";
             else
-                error = "";
+                Error = "";
         }
         void ValidateAuthors()
         {
             if (Authors.Count == 0 || Authors[0] == "")
-                error = "Authors can't be empty";
+                Error = "Authors can't be empty";
             else
-                error = "";
+                Error = "";
         } 
         void ValidateISBN()
         {
             if (ISBN == null || ISBN.Length != 10 || ISBN.Any(ch => ch < '0' || ch > '9'))
-                error = "ISBN need to contain 10 digits";
+                Error = "ISBN need to contain 10 digits";
             else
-                error = "";
+                Error = "";
         }
         void ValidatePages()
         {
             if (Pages < 10)
-                error = "Too few pages";
+                Error = "Too few pages";
             else if (Pages > 13095)
-                error = "Too much pages";
+                Error = "Too much pages";
             else
-                error = "";
+                Error = "";
         }
 
         void ValidateTags()
         {
-            if (Tags.Count == 0 || Authors[0] == "")
-                error = "Tags can't be empty";
+            if (Tags.Count == 0 || Tags[0] == "")
+                Error = "Tags can't be empty";
             else
-                error = "";
+                Error = "";
         }
 
         void ValidatePublicationYear()
         {
             if (PublicationYear > DateTime.Now.Year)
-                error = "It's not Future";
+                Error = "It's not Future";
             else
-                error = "";
+                Error = "";
         }
 
         void ValidateHouse()
         {
             if (string.IsNullOrEmpty(Name))
-                error = "House can't be empty";
+                Error = "House can't be empty";
             else if (Name.Length < 1 || Name.Length > 50)
-                error = "Invalid House size";
+                Error = "Invalid House size";
             else
-                error = "";
+                Error = "";
         }
         #endregion
     }

@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace Books.Models
 {
-    public class Author : IModel, IDataErrorInfo
+    [Serializable]
+    public class Author : IModel, IDataErrorInfo, ISerializable
     {
         public Author()
         {
@@ -19,13 +22,16 @@ namespace Books.Models
         public List <string> Books { get; set; }
         #endregion
 
-        #region Validation
-        private string error;
-        public string Error
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            get { return error; }
-            private set { error = value; }
+            info.AddValue(nameof(Name), Name);
+            info.AddValue(nameof(DayOfBirdth), DayOfBirdth);
+            info.AddValue(nameof(Photo), Photo);
+            info.AddValue(nameof(Books), Books);
         }
+
+        #region Validation
+        public string Error { get; private set; }
 
         public string this[string propertyName]
         {
@@ -37,34 +43,33 @@ namespace Books.Models
                     case "DayOfBirdth": ValidateDayOfBirdth(); break;
                     case "Books": ValidateBooks(); break;
                 }
-                return error;
+                return Error;
             }
         }
 
         void ValidateName()
         {
             if (string.IsNullOrEmpty(Name))
-                error = "Name can't be empty";
+                Error = "Name can't be empty";
             else if (Name.Length < 1 || Name.Length > 50)
-                error = "Invalid name size";
+                Error = "Invalid name size";
             else
-                error = "";
+                Error = "";
         }
         private void ValidateDayOfBirdth()
         {
             if (DayOfBirdth == DateTime.MinValue)
-                error = "Invalid data";
+                Error = "Invalid data";
             else
-                error = "";
+                Error = "";
         }
         void ValidateBooks()
         {
             if (Books.Count == 0 || Books[0] == "")
-                error = "Books can't be empty";
+                Error = "Books can't be empty";
             else
-                error = "";
+                Error = "";
         }
-
         #endregion
     }
 }

@@ -14,6 +14,7 @@ namespace Books
         static readonly string path = AppDomain.CurrentDomain.BaseDirectory;
         static readonly string dataPath = Path.Combine(path, "data");
         static readonly string backupData = Path.Combine(path, "backup.zip");
+        public static readonly string serializationData = Path.Combine(path, "serialization");
 
         static readonly string separator = Environment.NewLine + Environment.NewLine;
         static readonly string booksData = Path.Combine(dataPath, "books.txt");

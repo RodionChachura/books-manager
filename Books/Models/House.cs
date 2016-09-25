@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Books.Models
 {
-    public class House : IModel, IDataErrorInfo
+    public class House : IModel, IDataErrorInfo, ISerializable
     {
         public House()
         {
@@ -18,13 +20,15 @@ namespace Books.Models
         public List<string> Books { get; set; }
         #endregion
 
-        #region Validation
-        private string error;
-        public string Error
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            get { return error; }
-            private set { error = value; }
+            info.AddValue(nameof(Name), Name);
+            info.AddValue(nameof(City), City);
+            info.AddValue(nameof(Books), Books);
         }
+
+        #region Validation
+        public string Error { get; private set; }
 
         public string this[string propertyName]
         {
@@ -36,34 +40,34 @@ namespace Books.Models
                     case "City": ValidateCity(); break;
                     case "Books": ValidateBooks(); break;
                 }
-                return error;
+                return Error;
             }
         }
 
         void ValidateName()
         {
             if (string.IsNullOrEmpty(Name))
-                error = "Name can't be empty";
+                Error = "Name can't be empty";
             else if (Name.Length < 1 || Name.Length > 50)
-                error = "Invalid name size";
+                Error = "Invalid name size";
             else
-                error = "";
+                Error = "";
         }
         void ValidateCity()
         {
             if (string.IsNullOrEmpty(City))
-                error = "City can't be empty";
+                Error = "City can't be empty";
             else if (City.Length < 1 || City.Length > 50)
-                error = "Invalid city size";
+                Error = "Invalid city size";
             else
-                error = "";
+                Error = "";
         }
         void ValidateBooks()
         {
             if (Books.Count == 0 || Books[0] == "")
-                error = "Books can't be empty";
+                Error = "Books can't be empty";
             else
-                error = "";
+                Error = "";
         }
         #endregion
     }
