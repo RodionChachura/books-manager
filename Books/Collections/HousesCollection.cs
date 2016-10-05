@@ -17,5 +17,9 @@ namespace Books.Collections
         {
             Add(house.Name, house);
         }
+        public List<House> ToList()
+        {
+            return Values.Cast<House>().ToList();
+        }
     }
 }

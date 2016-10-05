@@ -1,6 +1,7 @@
 ﻿using Books.Abstraction;
 using Books.Commands;
 using Books.Models;
+using Books.Models.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,14 +13,14 @@ namespace Books.ViewModels
 {
     public class AuthorViewModel : IViewModel, INotifyPropertyChanged, IDataErrorInfo
     {
-        private Author model = new Author();
+        private ValidatableAuthor model = new ValidatableAuthor();
         private string dayOfBirdth = "";
         public IModel Model
         {
             get { return model; }
             set
             {
-                model = (Author)value;
+                model = new ValidatableAuthor((Author)value);
             }
         }
         public AuthorViewModel()

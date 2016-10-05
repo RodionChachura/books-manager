@@ -11,9 +11,6 @@
         Title="Rodions Card-File" 
         WindowStartupLocation="CenterScreen"
         Height="500" Width="750">
-    <Window.DataContext>
-        <viewModels:MainViewModel/>
-    </Window.DataContext>
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:BookViewModel}">
             <views:BookView/>

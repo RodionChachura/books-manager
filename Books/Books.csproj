@@ -35,11 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
@@ -80,6 +85,12 @@
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
+    <Compile Include="Models\Serialization\SerializableAuthor.cs" />
+    <Compile Include="Models\Serialization\SerializableBook.cs" />
+    <Compile Include="Models\Serialization\SerializableHouse.cs" />
+    <Compile Include="Models\Validation\ValidatableAuthor.cs" />
+    <Compile Include="Models\Validation\ValidatableBook.cs" />
+    <Compile Include="Models\Validation\ValidatableHouse.cs" />
     <Compile Include="Serializator.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BooksViewModel.cs" />

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.IO.Compression;
+using System.Configuration;
 
 namespace Books
 {
@@ -12,16 +13,16 @@ namespace Books
     {
         #region Constatnts
         static readonly string path = AppDomain.CurrentDomain.BaseDirectory;
-        static readonly string dataPath = Path.Combine(path, "data");
-        static readonly string backupData = Path.Combine(path, "backup.zip");
-        public static readonly string serializationData = Path.Combine(path, "serialization");
+        static readonly string dataPath = Path.Combine(path, ConfigurationManager.AppSettings["dataPath"]);
+        static readonly string backupData = Path.Combine(path, ConfigurationManager.AppSettings["backupPath"]);
+        public static readonly string serializationData = Path.Combine(path, ConfigurationManager.AppSettings["serializationPath"]);
 
         static readonly string separator = Environment.NewLine + Environment.NewLine;
-        static readonly string booksData = Path.Combine(dataPath, "books.txt");
-        static readonly string authorsData = Path.Combine(dataPath, "authors.txt");
-        static readonly string housesData = Path.Combine(dataPath, "houses.txt");
-        public static readonly string authorsPhotosData = Path.Combine(path, "authorsPhotos");
-        public static readonly string unknownAuthorPhoto = Path.Combine(authorsPhotosData, "unknown.jpg");
+        static readonly string booksData = Path.Combine(dataPath, ConfigurationManager.AppSettings["booksPath"]);
+        static readonly string authorsData = Path.Combine(dataPath, ConfigurationManager.AppSettings["authorsPath"]);
+        static readonly string housesData = Path.Combine(dataPath, ConfigurationManager.AppSettings["housesPath"]);
+        public static readonly string authorsPhotosData = Path.Combine(path, ConfigurationManager.AppSettings["authorsPhotosPath"]);
+        public static readonly string unknownAuthorPhoto = Path.Combine(authorsPhotosData, ConfigurationManager.AppSettings["unknownPath"]);
 
         const int authorsFields = 2;
         const int housesFields = 2;
@@ -32,6 +33,7 @@ namespace Books
         {
             Directory.CreateDirectory(dataPath);
             Directory.CreateDirectory(authorsPhotosData);
+            Directory.CreateDirectory(serializationData);
         }
 
         #region Helping Methods
@@ -40,6 +42,7 @@ namespace Books
             Regex regex = new Regex(delim);
             return regex.Split(text);
         }
+
         private string[] GetStringModels(string filePath)
         {
             if (!File.Exists(filePath))
@@ -52,8 +55,8 @@ namespace Books
                 string text = File.ReadAllText(filePath);
                 return SplitByRegex(text, Environment.NewLine + Environment.NewLine);
             }
-
         }
+
         private List<string[]> GetDetailedStringModels(int numberOfFields, string source)
         {
             List<string[]> models = new List<string[]>();

@@ -12,6 +12,7 @@ namespace Books
     {
         public MainWindow()
         {
+            DataContext = new MainViewModel();
             InitializeComponent();
         }
 

@@ -1,6 +1,8 @@
-﻿using Books.Abstraction;
+﻿using AutoMapper;
+using Books.Abstraction;
 using Books.Commands;
 using Books.Models;
+using Books.Models.Validation;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
@@ -10,11 +12,11 @@ namespace Books.ViewModels
 {
     public class BookViewModel : IViewModel, INotifyPropertyChanged, IDataErrorInfo
     {
-        private Book model = new Book();
+        private ValidatableBook model = new ValidatableBook();
         public IModel Model
         {
             get { return model; }
-            set { model = (Book)value; }
+            set { model = new ValidatableBook((Book)value); }
         }
         public BookViewModel()
         {

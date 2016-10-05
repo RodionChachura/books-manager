@@ -1,21 +1,27 @@
 ﻿using Books.Abstraction;
 using Books.Commands;
-using Books.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Input;
-using System;
+using Books.Models.Validation;
+using Books.Models;
 
 namespace Books.ViewModels
 {
     public class HouseViewModel : IViewModel, INotifyPropertyChanged, IDataErrorInfo
     {
-        private House model = new House();
+        private ValidatableHouse model = new ValidatableHouse();
         public IModel Model
         {
-            get { return model; }
-            set { model = (House)value; }
+            get
+            {
+                return model;
+            }
+            set
+            {
+                model = new ValidatableHouse((House)value);
+            }
         }
         public HouseViewModel()
         {
