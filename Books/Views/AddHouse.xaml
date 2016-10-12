@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books.Views"
+        xmlns:nc="clr-namespace:Books"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -32,22 +33,22 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="Name:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="0" Grid.Column="0" Content="{nc:Loc Name}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="0" Grid.Column="1" Margin="5"
                 Text="{Binding Path=Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Content="City:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="1" Grid.Column="0" Content="{nc:Loc City}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="1" Grid.Column="1" Margin="5"
                 Text="{Binding Path=City, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-            <Label Grid.Row="2" Grid.Column="0" Content="Book(s):" HorizontalAlignment="Right" Margin="0, 3, 3, 3"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="{nc:Loc Books}" HorizontalAlignment="Right" Margin="0, 3, 3, 3"/>
             <TextBox Grid.Row="2" Grid.Column="1" Margin="5, -25, 5, -170" MaxHeight="170" 
-                Style="{StaticResource placeHolder}" Tag="For input more than one book use comma with two whitespace between books names. Example: War and Peace,  Anna Karenina"
+                Style="{StaticResource placeHolder}" Tag="{nc:Loc BooksInput}"
                 Text="{Binding Path=Books, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <Button x:Name="saveButton" 
-                Command="{Binding Path=SaveCommand}" Content="_Save"
+                Command="{Binding Path=SaveCommand}" Content="{nc:Loc Save}"
                 IsEnabled="{Binding Path=AllPropertiesValid}" Click="SaveButton_Click"/>
     </DockPanel>
 </Window>

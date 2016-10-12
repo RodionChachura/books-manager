@@ -49,7 +49,7 @@ namespace Books.ViewModels
                 if (dayOfBirdth != "")
                     return dayOfBirdth;
                 else if (model.DayOfBirdth != DateTime.MinValue)
-                    return model.DayOfBirdth.ToString("dd MMMM yyyy");
+                    return model.DayOfBirdth.ToString("dd/MM/yyyy");
                 else
                     return "";
             }

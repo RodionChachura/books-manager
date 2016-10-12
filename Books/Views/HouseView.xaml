@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:main ="clr-namespace:Books"
+             xmlns:nc ="clr-namespace:Books"
              xmlns:local="clr-namespace:Books.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -20,14 +20,14 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Name}" Style="{StaticResource Title}"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="City:"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Book(s):"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="{nc:Loc City}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="{nc:Loc Books}"/>
 
         <TextBlock Margin="5" FontSize ="14" Grid.Column="1" Grid.Row="1" Text="{Binding City}"/>
         <TextBlock Margin="5" FontSize ="14" Grid.Column="1" Grid.Row="2" Text="{Binding Books}" TextWrapping="Wrap"/>
 
-        <Button x:Name="changeButton" Grid.Column="0" Grid.Row="3" Background="Yellow" Content="Change" Click="ChangeButton_Click"  />
-        <Button x:Name="removeButton" Grid.Column="1" Grid.Row="3" Background="Red" Content="Remove"
+        <Button x:Name="changeButton" Grid.Column="0" Grid.Row="3" Background="Yellow" Content="{nc:Loc Change}" Click="ChangeButton_Click"  />
+        <Button x:Name="removeButton" Grid.Column="1" Grid.Row="3" Background="Red" Content="{nc:Loc Remove}"
                 Command="{Binding Path=RemoveCommand}"/>
     </Grid>
 </UserControl>

@@ -80,17 +80,20 @@
     <Compile Include="Collections\HousesCollection.cs" />
     <Compile Include="Collections\ObservableDictionary.cs" />
     <Compile Include="Collections\ViewModelsandModelsCollection.cs" />
+    <Compile Include="Commands\LanguageCommand.cs" />
     <Compile Include="Commands\RemoveCommand.cs" />
     <Compile Include="Commands\RestoreCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
+    <Compile Include="LocExtension.cs" />
     <Compile Include="Models\Serialization\SerializableAuthor.cs" />
     <Compile Include="Models\Serialization\SerializableBook.cs" />
     <Compile Include="Models\Serialization\SerializableHouse.cs" />
     <Compile Include="Models\Validation\ValidatableAuthor.cs" />
     <Compile Include="Models\Validation\ValidatableBook.cs" />
     <Compile Include="Models\Validation\ValidatableHouse.cs" />
+    <Compile Include="MyLinq.cs" />
     <Compile Include="Serializator.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BooksViewModel.cs" />
@@ -175,6 +178,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

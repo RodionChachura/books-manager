@@ -23,6 +23,12 @@ namespace Books.ViewModels
                 return new RestoreCommand();
             }
         }
-
+        public ICommand languageCommand
+        {
+            get
+            {
+                return new languageCommand();
+            }
+        }
     }
 }

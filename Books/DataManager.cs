@@ -8,10 +8,10 @@ namespace Books
 {
     public static class DataManager
     {
-        public static readonly string[] dateFormats = { "d/m/yyyy", "dd/m/yyyy", "d/mm/yyyy", "dd/mm/yyyy",
-                                                        "d/m/yyy", "dd/m/yyy", "d/mm/yyy", "dd/mm/yyy",
-                                                        "d/m/yy", "dd/m/yy", "d/mm/yy", "dd/mm/yy",
-                                                        "d/m/y", "dd/m/y", "d/mm/y", "dd/mm/y"};
+        public static readonly string[] dateFormats = { "d/M/yyyy", "dd/M/yyyy", "d/MM/yyyy", "dd/MM/yyyy",
+                                                        "d/M/yyy", "dd/M/yyy", "d/MM/yyy", "dd/MM/yyy",
+                                                        "d/M/yy", "dd/M/yy", "d/MM/yy", "dd/MM/yy",
+                                                        "d/M/y", "dd/M/y", "d/MM/y", "dd/MM/y"};
         public enum Type { Book, Author, House}
         static public BooksCollection Books { get; private set; }
         static public AuthorsCollection Authors { get; private set; }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Books.Views"
+             xmlns:nc="clr-namespace:Books"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -23,12 +24,12 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Name}" Style="{StaticResource Title}"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Author(s):"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="ISBN:"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Pages:"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Tags:"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Publication Year:"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Publication House:"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="{nc:Loc Authors}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="{nc:Loc ISBN}"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="{nc:Loc Pages}"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="{nc:Loc Tags}"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="{nc:Loc PublicationYear}"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="{nc:Loc PublicationHouse}"/>
 
         <TextBlock FontSize ="14" Grid.Column="1" Grid.Row="1" Margin="5" Text="{Binding Authors}" TextWrapping="Wrap"/>
         <TextBlock FontSize ="14" Grid.Column="1" Grid.Row="2" Margin="5" Text="{Binding ISBN}"/>
@@ -37,8 +38,8 @@
         <TextBlock FontSize ="14" Grid.Column="1" Grid.Row="5" Margin="5" Text="{Binding PublicationYear}"/>
         <TextBlock FontSize ="14" Grid.Column="1" Grid.Row="6" Margin="5" Text="{Binding House}"/>
 
-        <Button x:Name="changeButton" Grid.Column="0" Grid.Row="7" Background="Yellow" Content="Change" Click="ChangeButton_Click"  />
-        <Button x:Name="removeButton" Grid.Column="1" Grid.Row="7" Background="Red" Content="Remove"
+        <Button x:Name="changeButton" Grid.Column="0" Grid.Row="7" Background="Yellow" Content="{nc:Loc Change}" Click="ChangeButton_Click"  />
+        <Button x:Name="removeButton" Grid.Column="1" Grid.Row="7" Background="Red" Content="{nc:Loc Remove}"
                 Command="{Binding Path=RemoveCommand}"/>
     </Grid>
 </UserControl>

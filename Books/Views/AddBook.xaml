@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books.Views"
+        xmlns:nc="clr-namespace:Books"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -36,39 +37,39 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="Name:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="0" Grid.Column="0" Content="{nc:Loc Name}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="0" Grid.Column="1" Margin="5"
                 Text="{Binding Path=Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-            <Label Grid.Row="1" Grid.Column="0" Content="House:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="1" Grid.Column="0" Content="{nc:Loc House}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="1" Grid.Column="1" Margin="5"
                 Text="{Binding Path=House, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="2" Grid.Column="0" Content="ISBN:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="2" Grid.Column="0" Content="{nc:Loc ISBN }" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="2" Grid.Column="1" Margin="5"
                 Text="{Binding Path=ISBN, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="3" Grid.Column="0" Content="Pages:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="3" Grid.Column="0" Content="{nc:Loc Pages}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="3" Grid.Column="1" Margin="5"
                 Text="{Binding Path=Pages, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="4" Grid.Column="0" Content="Tags:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="4" Grid.Column="0" Content="{nc:Loc Tags }" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="4" Grid.Column="1" Margin="5"
                 Text="{Binding Path=Tags, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="5" Grid.Column="0" Content="Year:" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="5" Grid.Column="0" Content="{nc:Loc Year}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="5" Grid.Column="1" Margin="5"
                 Text="{Binding Path=PublicationYear, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-            <Label Grid.Row="6" Grid.Column="0" Content="Author(s):" HorizontalAlignment="Right" Margin="0,3,3,3" />
+            <Label Grid.Row="6" Grid.Column="0" Content="{nc:Loc Authors}" HorizontalAlignment="Right" Margin="0,3,3,3" />
             <TextBox Grid.Row="6" Grid.Column="1" Margin="5, -25,5,-50" MaxHeight="50"
-                Style="{StaticResource placeHolder}" Tag="For input more than one book use comma with two whitespace between books names. Example: War and Peace,  Anna Karenina"
+                Style="{StaticResource placeHolder}" Tag="{nc:Loc BooksInput}"
                 Text="{Binding Path=Authors, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <Button x:Name="saveButton" 
-                Command="{Binding Path=SaveCommand}" Content="_Save"
+                Command="{Binding Path=SaveCommand}" Content="{nc:Loc Save}"
                 IsEnabled="{Binding Path=AllPropertiesValid}" Click="SaveButton_Click"/>
     </DockPanel>
 </Window>

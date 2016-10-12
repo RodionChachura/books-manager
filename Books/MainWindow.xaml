@@ -24,8 +24,10 @@
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Settings">
-                <MenuItem Header="_Restore start data" Command="{Binding Path=RestoreCommand}"/>
+            <MenuItem Header="{local:Loc Settings}">
+                <MenuItem Header="{local:Loc RestoreStartData}" Command="{Binding Path=RestoreCommand}"/>
+                <MenuItem Header="{local:Loc ChangeLanguage}" Command="{Binding Path=languageCommand}"/>
+
             </MenuItem>
         </Menu>
         <Grid>
@@ -38,32 +40,32 @@
                     Grid.Column="0"
                     Grid.Row="0">
             <TabControl>
-                <TabItem Header="Books">
+                <TabItem Header="{local:Loc Books}">
                     <ListView x:Name="booksGrid" ItemsSource="{Binding BooksViewModel}" SelectionChanged="booksGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Title" Width="Auto" DisplayMemberBinding="{Binding Path=Name}"/>
-                                <GridViewColumn Header="Author(s)" Width="Auto" DisplayMemberBinding="{Binding Path=Authors}" />
+                                <GridViewColumn Header="{local:Loc Title}" Width="Auto" DisplayMemberBinding="{Binding Path=Name}"/>
+                                <GridViewColumn Header="{local:Loc Authors}" Width="Auto" DisplayMemberBinding="{Binding Path=Authors}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </TabItem>
-                <TabItem Header="Authors">
+                    <TabItem Header="{local:Loc Authors}">
                     <ListView x:Name="authorsGrid" ItemsSource="{Binding AuthorsViewModel}" SelectionChanged="authorsGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Day of Birdth" Width="Auto" DisplayMemberBinding="{Binding DayOfBirdth}" />
+                                <GridViewColumn Header="{local:Loc Name}" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="{local:Loc DayOfBirdth}" Width="Auto" DisplayMemberBinding="{Binding DayOfBirdth}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </TabItem>
-                <TabItem VerticalContentAlignment="Stretch"  Header="Houses">
+                    <TabItem VerticalContentAlignment="Stretch"  Header="{local:Loc Houses}">
                     <ListView x:Name="housesGrid" ItemsSource="{Binding HousesViewModel}" SelectionChanged="housesGrid_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="City" Width="Auto" DisplayMemberBinding="{Binding City}" />
+                                <GridViewColumn Header="{local:Loc Name}" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="{local:Loc City}" Width="Auto" DisplayMemberBinding="{Binding City}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -78,24 +80,24 @@
                 <ContentControl Name="infoControl" DockPanel.Dock="Top"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
 
-                    <Button x:Name="addBookButton" Content="Book" 
+                    <Button x:Name="addBookButton" Content="{local:Loc Book}" 
                         Grid.Row="0" Grid.Column="0"
-                        Margin="10" Click="AddBookButton_Click"/>
-                    <Button x:Name="addAuthorButton" Content="Author" 
+                        Margin="4" Click="AddBookButton_Click"/>
+                    <Button x:Name="addAuthorButton" Content="{local:Loc Author}" 
                         Grid.Row="0" Grid.Column="1"
-                        Margin="10" Click="AddAuthorButton_Click"/>
-                    <Button x:Name="addHouseButton" Content="House" 
+                        Margin="4" Click="AddAuthorButton_Click"/>
+                    <Button x:Name="addHouseButton" Content="{local:Loc House}" 
                         Grid.Row="0" Grid.Column="2"
-                        Margin="10" Click="AddHouseButton_Click"/>
+                        Margin="4" Click="AddHouseButton_Click"/>
                 </Grid>
             </DockPanel>
         </Grid>
