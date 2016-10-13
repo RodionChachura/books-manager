@@ -1,7 +1,10 @@
 ﻿using Books.ViewModels;
 using Books.Views;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
 
 namespace Books
 {
@@ -12,6 +15,7 @@ namespace Books
     {
         public MainWindow()
         {
+            Icon = Imaging.CreateBitmapSourceFromHIcon(Properties.Resources.library.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             DataContext = new MainViewModel();
             InitializeComponent();
         }

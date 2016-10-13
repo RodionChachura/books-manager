@@ -86,7 +86,8 @@
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
-    <Compile Include="LocExtension.cs" />
+    <Compile Include="Utils\IconUtilities.cs" />
+    <Compile Include="Utils\LocExtension.cs" />
     <Compile Include="Models\Serialization\SerializableAuthor.cs" />
     <Compile Include="Models\Serialization\SerializableBook.cs" />
     <Compile Include="Models\Serialization\SerializableHouse.cs" />
@@ -190,7 +191,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\Resources\author.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\book.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\house.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\library.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
