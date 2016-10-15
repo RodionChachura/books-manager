@@ -27,7 +27,19 @@
             <MenuItem Header="{local:Loc Settings}">
                 <MenuItem Header="{local:Loc RestoreStartData}" Command="{Binding Path=RestoreCommand}"/>
                 <MenuItem Header="{local:Loc ChangeLanguage}" Command="{Binding Path=languageCommand}"/>
-
+                <!--<MenuItem.Style>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="0" Color="Blue" Opacity="1" BlurRadius="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </MenuItem.Style>-->
             </MenuItem>
         </Menu>
         <Grid>

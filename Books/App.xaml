@@ -4,9 +4,20 @@
              xmlns:local="clr-namespace:Books"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!--<Style TargetType="{x:Type GridViewColumnHeader}">
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>-->
+        <Style TargetType="{x:Type MenuItem}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="0" Color="Green" Opacity="1" BlurRadius="20"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+            
+
+
         <Style TargetType="{x:Type ListView}">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         </Style>

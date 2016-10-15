@@ -86,8 +86,7 @@
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="FilesManager.cs" />
-    <Compile Include="Utils\IconUtilities.cs" />
-    <Compile Include="Utils\LocExtension.cs" />
+    <Compile Include="LocExtension.cs" />
     <Compile Include="Models\Serialization\SerializableAuthor.cs" />
     <Compile Include="Models\Serialization\SerializableBook.cs" />
     <Compile Include="Models\Serialization\SerializableHouse.cs" />
